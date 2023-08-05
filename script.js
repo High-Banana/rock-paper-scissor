@@ -3,6 +3,8 @@ let playerSelection;
 let computerSelection;
 let totalTries = 0;
 let output;
+let playerScore = 0;
+let computerScore = 0;
 
 function userInput() {
     playerSelection = prompt("Enter your weapon: ").toLowerCase();
@@ -23,11 +25,13 @@ function runGame(playerSelection, computerSelection) {
         case playerSelection === "paper" && computerSelection === "rock":
         case playerSelection === "scissor" && computerSelection === "paper":
             output = `You win!, ${playerSelection} beats ${computerSelection}`;
+            playerScore++;
             break;
         case playerSelection === "rock" && computerSelection === "paper":
         case playerSelection === "paper" && computerSelection === "scissor":
         case playerSelection === "scissor" && computerSelection === "rock":
             output = `You lose!, ${computerSelection} beats ${playerSelection}`;
+            computerScore++;
             break;
         default:
             output = "Please enter a valid choice (Rock, paper or scissor)";
@@ -40,3 +44,20 @@ while (totalTries < 5) {
     totalTries++;
     console.log(runGame(userInput(), getComputerSelection()));
 }
+
+function displayWinner(){
+    if(playerScore>computerScore){
+        return "YOU WIN!!!!";
+    }else if(playerScore===computerScore){
+        return "IT'S A DRAW!!!";
+    }else{
+        return "YOU LOSE :(";
+    }
+}
+
+function displayScore(){
+    return `Your score: ${playerScore}\nComputer Score: ${computerScore}`;
+}
+
+console.log(displayWinner());
+console.log(displayScore());
