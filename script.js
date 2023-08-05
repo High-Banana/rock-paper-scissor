@@ -48,11 +48,11 @@ while (totalTries < 5) {
 
 function displayWinner(){
     if(playerScore>computerScore){
-        return "YOU WIN!!!!";
+        return "*** YOU WON!!!! ***";
     }else if(playerScore===computerScore){
-        return "IT'S A DRAW!!!";
+        return "*** IT'S A DRAW!!! ***";
     }else{
-        return "YOU LOSE :(";
+        return "*** YOU LOST :( ***";
     }
 }
 
