@@ -35,6 +35,7 @@ function runGame(playerSelection, computerSelection) {
             break;
         default:
             output = "Please enter a valid choice (Rock, paper or scissor)";
+            totalTries--;
             break;
     }
     return output;
