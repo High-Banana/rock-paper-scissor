@@ -40,7 +40,7 @@ function playRound(playerSelection, computerSelection) {
             result = "Please enter a valid option (Rock, paper or scissor)";
             break;
     }
-    console.log(result);
+    return result;
 }
 
-playRound(playerSelection, computerSelection);
+console.log(playRound(playerSelection, computerSelection));
