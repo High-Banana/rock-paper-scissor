@@ -6,7 +6,7 @@ let output;
 let playerScore = 0;
 let computerScore = 0;
 
-function userInput() {
+function getuserInput() {
     playerSelection = prompt("Enter your weapon: ").toLowerCase();
     return playerSelection;
 }
@@ -43,7 +43,7 @@ function runGame(playerSelection, computerSelection) {
 
 while (totalTries < 5) {
     totalTries++;
-    console.log(runGame(userInput(), getComputerSelection()));
+    console.log(runGame(getuserInput(), getComputerSelection()));
 }
 
 function displayWinner(){
