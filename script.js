@@ -1,3 +1,5 @@
+const button = document.querySelectorAll(".btn");
+
 const options = ["rock", "paper", "scissor"];
 let playerSelection;
 let computerSelection;
@@ -6,15 +8,14 @@ let output;
 let playerScore = 0;
 let computerScore = 0;
 
-function getUserInput() {
-    playerSelection = prompt("Enter your weapon: ").toLowerCase();
-    return playerSelection;
-}
+button.forEach((element) => {
+    element.addEventListener("click", () => {
+        playerSelection = (element.textContent).toLowerCase();
+        computerSelection = options[Math.floor(Math.random() * 3)];
 
-function getComputerSelection() {
-    computerSelection = options[Math.floor(Math.random() * 3)];
-    return computerSelection;
-}
+        console.log(runGame(playerSelection, computerSelection));
+    })
+})
 
 function runGame(playerSelection, computerSelection) {
     switch (true) {
@@ -41,24 +42,24 @@ function runGame(playerSelection, computerSelection) {
     return output;
 }
 
-while (totalTries < 5) {
-    totalTries++;
-    console.log(runGame(getUserInput(), getComputerSelection()));
-}
+// while (totalTries < 5) {
+//     totalTries++;
+//     console.log(runGame(getUserInput(), getComputerSelection()));
+// }
 
-function displayWinner(){
-    if(playerScore>computerScore){
+function displayWinner() {
+    if (playerScore > computerScore) {
         return "*** YOU WON!!!! ***";
-    }else if(playerScore===computerScore){
+    } else if (playerScore === computerScore) {
         return "*** IT'S A DRAW!!! ***";
-    }else{
+    } else {
         return "*** YOU LOST :( ***";
     }
 }
 
-function displayScore(){
+function displayScore() {
     return `Your score: ${playerScore}\nComputer Score: ${computerScore}`;
 }
 
-console.log(displayWinner());
-console.log(displayScore());
+// console.log(displayWinner());
+// console.log(displayScore());
