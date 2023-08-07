@@ -15,25 +15,31 @@ let playerScore = 0;
 let computerScore = 0;
 let tries = 0;
 
-    button.forEach((element) => {
-        element.addEventListener("click", () => {
-            playerSelection = (element.textContent).toLowerCase();
-            
-            //To get computer's selection from options array
-            computerSelection = options[Math.floor(Math.random() * 3)];
-            
-            function displayGameOutput(){
-                playerInputField.textContent = `You choose ${playerSelection}`; //Show player selection
-                computerInputField.textContent = `Computer choose ${computerSelection}`; //Show CPU selection
-                gameResultField.textContent = runGame(playerSelection, computerSelection); //Show result
-                userScoreField.textContent = `${playerScore}`; //Show player score
-                computerScoreField.textContent = `${computerScore}`; // Show computer score
-            }
-            displayGameOutput();
-        })
-    })
+button.forEach((element) => {
+    element.addEventListener("click", () => {
+        playerSelection = (element.textContent).toLowerCase();
 
-winnerField.text = displayWinner();
+        //To get computer's selection from options array
+        computerSelection = options[Math.floor(Math.random() * 3)];
+
+        function displayGameOutput() {
+            playerInputField.textContent = `You choose ${playerSelection}`; //Show player selection
+            computerInputField.textContent = `Computer choose ${computerSelection}`; //Show CPU selection
+            gameResultField.textContent = runGame(playerSelection, computerSelection); //Show result
+            userScoreField.textContent = `${playerScore}`; //Show player score
+            computerScoreField.textContent = `${computerScore}`; // Show computer score
+        }
+            if(playerScore==5 || computerScore==5){
+                if(playerScore>computerScore){
+                    winnerField.textContent = "YOU WIN!!!";
+                }else{
+                    winnerField.textContent = "YOU LOSE :(";
+                }
+            }else{
+                displayGameOutput();
+            }
+    })
+})
 
 
 
@@ -66,16 +72,6 @@ function runGame(playerSelection, computerSelection) {
 //     totalTries++;
 //     console.log(runGame(getUserInput(), getComputerSelection()));
 // }
-
-function displayWinner() {
-    if (playerScore > computerScore) {
-        return "*** YOU WON!!!! ***";
-    } else if (playerScore === computerScore) {
-        return "*** IT'S A DRAW!!! ***";
-    } else {
-        return "*** YOU LOST :( ***";
-    }
-}
 
 function displayScore() {
     return `Your score: ${playerScore}\nComputer Score: ${computerScore}`;
