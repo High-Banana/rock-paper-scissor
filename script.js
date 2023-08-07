@@ -1,4 +1,7 @@
 const button = document.querySelectorAll(".btn");
+const playerInputField = document.getElementById("playerChoice");
+const computerInputField = document.getElementById("computerChoice");
+const gameResultField = document.getElementById("gameResult");
 
 const options = ["rock", "paper", "scissor"];
 let playerSelection;
@@ -8,14 +11,23 @@ let output;
 let playerScore = 0;
 let computerScore = 0;
 
+
 button.forEach((element) => {
     element.addEventListener("click", () => {
         playerSelection = (element.textContent).toLowerCase();
+        
+        //To get computer's selection from options array
         computerSelection = options[Math.floor(Math.random() * 3)];
 
-        console.log(runGame(playerSelection, computerSelection));
+        function displayGameOutput(){
+            playerInputField.textContent = `You choose ${playerSelection}`;
+            computerInputField.textContent = `Computer choose ${computerSelection}`;
+            gameResultField.textContent = runGame(playerSelection, computerSelection);
+        }
+        displayGameOutput();
     })
 })
+
 
 function runGame(playerSelection, computerSelection) {
     switch (true) {
@@ -25,13 +37,13 @@ function runGame(playerSelection, computerSelection) {
         case playerSelection === "rock" && computerSelection === "scissor":
         case playerSelection === "paper" && computerSelection === "rock":
         case playerSelection === "scissor" && computerSelection === "paper":
-            output = `You win!, ${playerSelection} beats ${computerSelection}`;
+            output = `You win, ${playerSelection} beats ${computerSelection}`;
             playerScore++;
             break;
         case playerSelection === "rock" && computerSelection === "paper":
         case playerSelection === "paper" && computerSelection === "scissor":
         case playerSelection === "scissor" && computerSelection === "rock":
-            output = `You lose!, ${computerSelection} beats ${playerSelection}`;
+            output = `You lose, ${computerSelection} beats ${playerSelection}`;
             computerScore++;
             break;
         default:
