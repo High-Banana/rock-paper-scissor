@@ -4,6 +4,7 @@ const computerInputField = document.getElementById("computerChoice");
 const gameResultField = document.getElementById("gameResult");
 const userScoreField = document.getElementById("user_score");
 const computerScoreField = document.getElementById("computer_score");
+const winnerField = document.getElementById("winner");
 
 const options = ["rock", "paper", "scissor"];
 let playerSelection;
@@ -12,25 +13,28 @@ let totalTries = 0;
 let output;
 let playerScore = 0;
 let computerScore = 0;
+let tries = 0;
 
-
-button.forEach((element) => {
-    element.addEventListener("click", () => {
-        playerSelection = (element.textContent).toLowerCase();
-
-        //To get computer's selection from options array
-        computerSelection = options[Math.floor(Math.random() * 3)];
-
-        function displayGameOutput(){
-            playerInputField.textContent = `You choose ${playerSelection}`; //Show player selection
-            computerInputField.textContent = `Computer choose ${computerSelection}`; //Show CPU selection
-            gameResultField.textContent = runGame(playerSelection, computerSelection); //Show result
-            userScoreField.textContent = `Your score: ${playerScore}`; //Show player score
-            computerScoreField.textContent = `Computer score: ${computerScore}`; // Show computer score
-        }
-        displayGameOutput();
+    button.forEach((element) => {
+        element.addEventListener("click", () => {
+            playerSelection = (element.textContent).toLowerCase();
+            
+            //To get computer's selection from options array
+            computerSelection = options[Math.floor(Math.random() * 3)];
+            
+            function displayGameOutput(){
+                playerInputField.textContent = `You choose ${playerSelection}`; //Show player selection
+                computerInputField.textContent = `Computer choose ${computerSelection}`; //Show CPU selection
+                gameResultField.textContent = runGame(playerSelection, computerSelection); //Show result
+                userScoreField.textContent = `${playerScore}`; //Show player score
+                computerScoreField.textContent = `${computerScore}`; // Show computer score
+            }
+            displayGameOutput();
+        })
     })
-})
+
+winnerField.text = displayWinner();
+
 
 
 function runGame(playerSelection, computerSelection) {
