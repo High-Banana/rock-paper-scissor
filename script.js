@@ -1,4 +1,4 @@
-const options = ["rock", "paper", "scissor"];
+const options = ["Rock", "Paper", "Scissor"];
 const button = document.querySelectorAll(".game_button");
 const userChoice = document.getElementById("user_choice");
 const computerChoice = document.getElementById("computer_choice");
@@ -15,12 +15,14 @@ let computerScore = 0;
 
 button.forEach((button)=>{
     button.addEventListener("click", ()=>{
-        playerSelection = (button.textContent).toLowerCase();
-        computerSelection = options[Math.floor(Math.random() * 3)];
+        const selectedButton = button.textContent;
+        playerSelection = selectedButton.toLowerCase();
+        const computerText = options[Math.floor(Math.random() * 3)];
+        computerSelection = computerText.toLowerCase();
         
         function displayOutput(){
-            userChoice.textContent = playerSelection;
-            computerChoice.textContent = computerSelection;
+            userChoice.textContent = selectedButton;
+            computerChoice.textContent = computerText;
             gameResult.textContent = runGame(playerSelection, computerSelection);
             playerScoreField.textContent = playerScore;
             computerScoreField.textContent = computerScore;
