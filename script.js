@@ -6,9 +6,7 @@ const gameResult = document.getElementById("game_result");
 const playerScoreField = document.getElementById("player_score");
 const computerScoreField = document.getElementById("computer_score");
 const winnerField = document.getElementById("output_winner");
-const resultDisplaySection = document.getElementById("display_result_section");
 let playerSelection, computerSelection, output;
-let totalTries = 0;
 let playerScore = 0;
 let computerScore = 0;
 
@@ -59,31 +57,6 @@ function runGame(playerSelection, computerSelection) {
             output = `You lose! ${computerSelection} beats ${playerSelection}`;
             computerScore++;
             break;
-        default:
-            totalTries--;
-            break;
     }
     return output;
 }
-
-// while (totalTries < 5) {
-//     totalTries++;
-//     console.log(runGame(getuserInput(), getComputerSelection()));
-// }
-
-function displayWinner(){
-    if(playerScore>computerScore){
-        return "*** YOU WON!!!! ***";
-    }else if(playerScore===computerScore){
-        return "*** IT'S A DRAW!!! ***";
-    }else{
-        return "*** YOU LOST :( ***";
-    }
-}
-
-function displayScore(){
-    return `Your score: ${playerScore}\nComputer Score: ${computerScore}`;
-}
-
-// console.log(displayWinner());
-// console.log(displayScore());
