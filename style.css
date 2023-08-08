@@ -1,0 +1,58 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: gray;
+}
+
+#button_section {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    margin: auto;
+    padding: 5rem 0;
+}
+
+button {
+    background-color: orange;
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+button:hover{
+    transform: scale(1.05);
+}
+
+#option_display_section{
+    display: flex;
+    gap:25rem;
+    justify-content: center;
+    padding: 2rem;
+}
+
+#game_result{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 4rem;
+}
+
+#display_result_section{
+    display: flex;
+    gap: 4rem;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#display_score{
+    display: flex;
+    gap: 5rem;
+    justify-content: center;
+}
+
+#display_winner{
+    text-align: center;
+    margin: auto;
+}
