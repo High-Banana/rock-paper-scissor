@@ -1,20 +1,18 @@
 const options = ["rock", "paper", "scissor"];
-let playerSelection;
-let computerSelection;
+const button = document.querySelectorAll(".game_button");
+let playerSelection, computerSelection, output;
 let totalTries = 0;
-let output;
 let playerScore = 0;
 let computerScore = 0;
 
-function getuserInput() {
-    playerSelection = prompt("Enter your weapon: ").toLowerCase();
-    return playerSelection;
-}
 
-function getComputerSelection() {
-    computerSelection = options[Math.floor(Math.random() * 3)];
-    return computerSelection;
-}
+button.forEach((button)=>{
+    button.addEventListener("click", ()=>{
+        playerSelection = (button.textContent).toLowerCase();
+        computerSelection = options[Math.floor(Math.random() * 3)];
+        runGame(playerSelection, computerSelection);
+    })
+})
 
 function runGame(playerSelection, computerSelection) {
     switch (true) {
@@ -41,10 +39,10 @@ function runGame(playerSelection, computerSelection) {
     return output;
 }
 
-while (totalTries < 5) {
-    totalTries++;
-    console.log(runGame(getuserInput(), getComputerSelection()));
-}
+// while (totalTries < 5) {
+//     totalTries++;
+//     console.log(runGame(getuserInput(), getComputerSelection()));
+// }
 
 function displayWinner(){
     if(playerScore>computerScore){
@@ -60,5 +58,5 @@ function displayScore(){
     return `Your score: ${playerScore}\nComputer Score: ${computerScore}`;
 }
 
-console.log(displayWinner());
-console.log(displayScore());
+// console.log(displayWinner());
+// console.log(displayScore());
