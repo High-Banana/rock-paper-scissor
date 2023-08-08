@@ -1,5 +1,12 @@
 const options = ["rock", "paper", "scissor"];
 const button = document.querySelectorAll(".game_button");
+const userChoice = document.getElementById("user_choice");
+const computerChoice = document.getElementById("computer_choice");
+const gameResult = document.getElementById("game_result");
+const playerScoreField = document.getElementById("player_score");
+const computerScoreField = document.getElementById("computer_score");
+const winnerField = document.getElementById("output_winner");
+const resultDisplaySection = document.getElementById("display_result_section");
 let playerSelection, computerSelection, output;
 let totalTries = 0;
 let playerScore = 0;
@@ -10,29 +17,47 @@ button.forEach((button)=>{
     button.addEventListener("click", ()=>{
         playerSelection = (button.textContent).toLowerCase();
         computerSelection = options[Math.floor(Math.random() * 3)];
-        runGame(playerSelection, computerSelection);
+        
+        function displayOutput(){
+            userChoice.textContent = playerSelection;
+            computerChoice.textContent = computerSelection;
+            gameResult.textContent = runGame(playerSelection, computerSelection);
+            playerScoreField.textContent = playerScore;
+            computerScoreField.textContent = computerScore;
+            if(playerScore==5||computerScore==5){
+                if(playerScore>computerScore){
+                    winnerField.textContent = "YOU WIN!!";
+                }else{
+                    winnerField.textContent = "YOU LOSE :(";
+                }
+            }
+        }
+        if(playerScore==5||computerScore==5){
+            return;
+        }else{
+            displayOutput();
+        }
     })
 })
 
 function runGame(playerSelection, computerSelection) {
     switch (true) {
         case playerSelection === computerSelection:
-            output = `Tie!, both choose ${playerSelection}`;
+            output = `Tie! both choose ${playerSelection}`;
             break;
         case playerSelection === "rock" && computerSelection === "scissor":
         case playerSelection === "paper" && computerSelection === "rock":
         case playerSelection === "scissor" && computerSelection === "paper":
-            output = `You win!, ${playerSelection} beats ${computerSelection}`;
+            output = `You win! ${playerSelection} beats ${computerSelection}`;
             playerScore++;
             break;
         case playerSelection === "rock" && computerSelection === "paper":
         case playerSelection === "paper" && computerSelection === "scissor":
         case playerSelection === "scissor" && computerSelection === "rock":
-            output = `You lose!, ${computerSelection} beats ${playerSelection}`;
+            output = `You lose! ${computerSelection} beats ${playerSelection}`;
             computerScore++;
             break;
         default:
-            output = "Please enter a valid choice (Rock, paper or scissor)";
             totalTries--;
             break;
     }
